@@ -1,9 +1,12 @@
-import * as admin from "firebase-admin";
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
+import { getStorage } from 'firebase-admin/storage';
 
-if (!admin.apps.length) {
+if (!getApps().length) {
   try {
-    admin.initializeApp({
-      credential: admin.credential.cert({
+    initializeApp({
+      credential: cert({
         projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         // Replace escaped newline characters if any
@@ -16,8 +19,8 @@ if (!admin.apps.length) {
   }
 }
 
-const adminAuth = admin.auth();
-const adminDb = admin.firestore();
-const adminStorage = admin.storage();
+const adminAuth = getAuth();
+const adminDb = getFirestore();
+const adminStorage = getStorage();
 
 export { adminAuth, adminDb, adminStorage };

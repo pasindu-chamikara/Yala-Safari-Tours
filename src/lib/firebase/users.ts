@@ -13,7 +13,7 @@ export const getUsers = async (roles?: Role[]) => {
     const querySnapshot = await getDocs(q);
     const users: UserProfile[] = [];
     querySnapshot.forEach((doc) => {
-      users.push({ uid: doc.id, ...doc.data() } as UserProfile);
+      users.push({ uid: doc.id, ...(doc.data() as any) } as UserProfile);
     });
     return { success: true, data: users };
   } catch (error) {

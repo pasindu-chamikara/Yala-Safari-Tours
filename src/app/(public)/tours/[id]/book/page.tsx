@@ -83,7 +83,6 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
       customerPhone: formData.customerPhone,
       specialRequests: formData.specialRequests,
       totalPrice,
-      status: 'PENDING',
       userId: user?.uid || undefined,
     });
 
