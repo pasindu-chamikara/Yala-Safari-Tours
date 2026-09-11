@@ -9,6 +9,8 @@ export const metadata = {
 import { tours as fallbackTours } from '@/lib/data/tours';
 import { getTours } from '@/lib/firebase/tours';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ToursPage() {
   const { success, data } = await getTours();
   const displayTours = success && data && data.length > 0 ? data : fallbackTours;

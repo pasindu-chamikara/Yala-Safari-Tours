@@ -3,13 +3,7 @@ import { getTours } from '@/lib/firebase/tours';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  const { success, data } = await getTours();
-  const allTours = success && data && data.length > 0 ? data : fallbackTours;
-  return allTours.map((tour) => ({
-    id: tour.id,
-  }));
-}
+export const dynamic = 'force-dynamic';
 
 export default async function TourDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;

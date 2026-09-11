@@ -6,6 +6,8 @@ import { tours as fallbackTours } from "@/lib/data/tours";
 import { getVehicles } from "@/lib/firebase/vehicles";
 import HeroSlider from "@/components/HeroSlider";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const { success, data } = await getTours();
   const displayTours = success && data && data.length > 0 ? data.slice(0, 3) : fallbackTours.slice(0, 3);
