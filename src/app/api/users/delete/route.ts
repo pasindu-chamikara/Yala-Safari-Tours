@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { adminAuth, adminDb } from "@/lib/firebase/admin";
+import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 import { Role } from "@/types";
 
 export async function DELETE(req: Request) {
@@ -10,10 +10,10 @@ export async function DELETE(req: Request) {
     }
 
     const token = authHeader.split("Bearer ")[1];
-    const decodedToken = await adminAuth.verifyIdToken(token);
+    const decodedToken = await getAdminAuth().verifyIdToken(token);
     
     // Fetch the requester's role
-    const requesterDoc = await adminDb.collection("users").doc(decodedToken.uid).get();
+    const requesterDoc = await getAdminDb().collection("users").doc(decodedToken.uid).get();
     if (!requesterDoc.exists) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -28,7 +28,7 @@ export async function DELETE(req: Request) {
     }
 
     // Fetch target user's role
-    const targetDoc = await adminDb.collection("users").doc(targetUid).get();
+    const targetDoc = await getAdminDb().collection("users").doc(targetUid).get();
     if (!targetDoc.exists) {
       return NextResponse.json({ error: "Target user not found" }, { status: 404 });
     }
@@ -52,10 +52,10 @@ export async function DELETE(req: Request) {
     }
 
     // Delete user in Firebase Auth
-    await adminAuth.deleteUser(targetUid);
+    await getAdminAuth().deleteUser(targetUid);
 
     // Delete user doc in Firestore
-    await adminDb.collection("users").doc(targetUid).delete();
+    await getAdminDb().collection("users").doc(targetUid).delete();
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

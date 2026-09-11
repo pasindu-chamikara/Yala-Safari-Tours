@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { adminAuth, adminDb } from "@/lib/firebase/admin";
+import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 import { Role } from "@/types";
 
 export async function POST(req: Request) {
@@ -10,10 +10,10 @@ export async function POST(req: Request) {
     }
 
     const token = authHeader.split("Bearer ")[1];
-    const decodedToken = await adminAuth.verifyIdToken(token);
+    const decodedToken = await getAdminAuth().verifyIdToken(token);
     
     // Fetch the requester's role
-    const requesterDoc = await adminDb.collection("users").doc(decodedToken.uid).get();
+    const requesterDoc = await getAdminDb().collection("users").doc(decodedToken.uid).get();
     if (!requesterDoc.exists) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -39,14 +39,14 @@ export async function POST(req: Request) {
     }
 
     // Create user in Firebase Auth
-    const userRecord = await adminAuth.createUser({
+    const userRecord = await getAdminAuth().createUser({
       email,
       password,
       displayName: name,
     });
 
     // Create user doc in Firestore
-    await adminDb.collection("users").doc(userRecord.uid).set({
+    await getAdminDb().collection("users").doc(userRecord.uid).set({
       uid: userRecord.uid,
       name,
       email,
