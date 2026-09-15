@@ -30,16 +30,16 @@ export default function Navbar() {
   };
 
   const linkClass = (path: string) => 
-    `px-4 py-2.5 rounded-none transition-all duration-300 hover:shadow-sm ${
+    `px-4 py-2.5 rounded-none transition-all duration-300 font-bold ${
       isActive(path) 
-        ? "bg-stone-100/80 text-[#314a1c] font-bold shadow-sm" 
-        : "hover:bg-stone-100/80 hover:text-[#314a1c]"
+        ? "bg-stone-100/80 text-[#314a1c] shadow-sm" 
+        : "text-stone-900 hover:bg-stone-100/80 hover:text-[#314a1c]"
     }`;
 
   return (
     <>
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500 group">
-      <div className="bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl shadow-stone-800/10 rounded-none px-4 md:px-6 h-20 flex justify-between items-center relative transition-all duration-500 hover:bg-white/80">
+    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-500 group">
+      <div className="bg-white/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm px-4 md:px-8 h-20 flex justify-between items-center relative transition-all duration-500">
 
         {/* Left: Logo & Mobile Menu */}
         <div className="flex items-center gap-3 lg:gap-4 flex-none">
@@ -53,18 +53,18 @@ export default function Navbar() {
           </button>
           
           <Link href="/" className="flex items-center group/logo">
-            <div className="w-14 h-14 md:w-16 md:h-16 rounded-none flex items-center justify-center overflow-hidden bg-white shadow-sm border border-white/60 transition-all duration-500 group-hover/logo:scale-105 group-hover/logo:shadow-md">
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-none flex items-center justify-center overflow-hidden bg-white shadow-sm border border-stone-200 transition-all duration-500 group-hover/logo:scale-105 group-hover/logo:shadow-md">
               <Image src="/logo-yala.jpg" alt="Logo" width={56} height={56} className="w-[85%] h-[85%] object-contain" />
             </div>
           </Link>
         </div>
 
         {/* Center: Navigation Links (Desktop) */}
-        <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm text-stone-600 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center space-x-1 font-medium text-base text-stone-900 flex-1 justify-center">
           <Link href="/tours" className={linkClass('/tours')}>
             Tours & Safaris
           </Link>
-          <Link href="/#parks" className={`px-4 py-2.5 rounded-none transition-all duration-300 hover:shadow-sm hover:bg-stone-100/80 hover:text-[#314a1c]`}>
+          <Link href="/#parks" className={`px-4 py-2.5 rounded-none transition-all duration-300 font-bold text-stone-900 hover:shadow-sm hover:bg-stone-100/80 hover:text-[#314a1c]`}>
             National Parks
           </Link>
           <Link href="/gallery" className={linkClass('/gallery')}>
@@ -91,15 +91,16 @@ export default function Navbar() {
               <button 
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
                 aria-label="Profile"
-                className="w-10 h-10 rounded-none flex items-center justify-center text-stone-600 bg-stone-100/80 hover:bg-stone-200 hover:text-[#314a1c] transition-all duration-300 shadow-sm"
+                className="h-10 px-3 rounded-none flex items-center justify-center gap-2 text-stone-600 bg-stone-100/80 hover:bg-stone-200 hover:text-[#314a1c] transition-all duration-300 shadow-sm font-medium text-sm"
               >
                 {user && user.photoURL ? (
-                  <Image src={user.photoURL} alt="Profile" width={40} height={40} className="w-full h-full object-cover" />
+                  <Image src={user.photoURL} alt="Profile" width={24} height={24} className="w-6 h-6 rounded-full object-cover" />
                 ) : (
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                   </svg>
                 )}
+                <span className="hidden sm:inline-block">{user ? 'Account' : 'Sign In'}</span>
               </button>
 
               {/* Dropdown Menu */}

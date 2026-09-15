@@ -65,7 +65,7 @@ function RegisterForm() {
             <input
               type="text"
               required
-              className="w-full px-4 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-full px-4 py-2 text-stone-900 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -75,7 +75,7 @@ function RegisterForm() {
             <input
               type="email"
               required
-              className="w-full px-4 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-full px-4 py-2 text-stone-900 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -85,7 +85,7 @@ function RegisterForm() {
             <input
               type="tel"
               required
-              className="w-full px-4 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-full px-4 py-2 text-stone-900 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
@@ -96,7 +96,7 @@ function RegisterForm() {
               type="password"
               required
               minLength={6}
-              className="w-full px-4 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-full px-4 py-2 text-stone-900 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-emerald-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

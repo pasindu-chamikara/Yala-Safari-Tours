@@ -67,6 +67,26 @@ export default async function TourDetailPage({ params }: { params: Promise<{ id:
           </section>
 
           <section className="mb-12">
+            <h2 className="text-3xl text-stone-800 font-bold mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Passenger Safety</h2>
+            <div className="bg-emerald-50 p-6 rounded-none border-l-4 border-emerald-600">
+              <ul className="space-y-3 text-stone-700">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                  <span><strong>Vehicle Seatbelts:</strong> All our 4x4 safari jeeps are equipped with secure, well-maintained seatbelts for every passenger.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                  <span><strong>First-Aid Equipment:</strong> A comprehensive medical first-aid kit is always available on board all our vehicles.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  <span><strong>Emergency Protocols:</strong> Our experienced guides are fully trained in emergency response and wildlife safety procedures.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-3xl text-stone-800 font-bold mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Itinerary</h2>
             <div className="space-y-6">
               {tour.itinerary?.map((item) => (

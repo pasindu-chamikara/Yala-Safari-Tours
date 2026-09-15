@@ -17,12 +17,12 @@ export default function AboutPage() {
       <section className="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0 w-full h-full">
           <img 
-            src="https://images.unsplash.com/photo-1542640244-76cb960ee3f9?q=80&w=2000&auto=format&fit=crop" 
+            src="/hero3.jpg" 
             alt="Majestic Sri Lankan Elephant" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-stone-950/60 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-900/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-stone-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/10 to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 mt-10 max-w-4xl mx-auto transform translate-y-8">
@@ -42,11 +42,7 @@ export default function AboutPage() {
 
       {/* 2. Brand Identity & Intro Section */}
       <section className="py-16 px-6 max-w-5xl mx-auto text-center relative z-20">
-        <div className="flex justify-center mb-16">
-          <div className="relative p-8 bg-white shadow-2xl border border-stone-100 rounded-none animate-float-slow">
-            <img src="/logo-yala.jpg" alt="Yala Safari Logo" className="h-32 w-auto object-contain" />
-          </div>
-        </div>
+
         
         <h2 className="text-4xl md:text-5xl text-stone-900 mb-10 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
           Born from a profound respect for nature.

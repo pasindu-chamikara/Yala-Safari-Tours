@@ -21,12 +21,12 @@ export default async function ToursPage() {
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-stone-900">
           <img
-            src="https://images.unsplash.com/photo-1537242858712-4fb85292c462?q=80&w=2000&auto=format&fit=crop"
+            src="/yala.jpg"
             alt="Sri Lanka Landscape"
-            className="w-full h-full object-cover opacity-70"
+            className="w-full h-full object-cover opacity-60"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/10 to-transparent"></div>
         <div className="relative z-10 text-center px-6 mt-16">
           <div className="flex items-center justify-center gap-4 text-emerald-400 text-sm font-bold tracking-widest mb-6">
             <div className="w-12 h-px bg-emerald-400"></div>
@@ -36,7 +36,7 @@ export default async function ToursPage() {
           <h1 className="text-6xl md:text-8xl text-white font-bold mb-6 drop-shadow-xl" style={{ fontFamily: 'var(--font-playfair)' }}>
             Explore Tours
           </h1>
-          <p className="text-xl text-stone-200 max-w-2xl mx-auto drop-shadow-md">
+          <p className="text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md">
             Journey beyond the safari. Experience the rich culture, pristine beaches, and misty mountains of the Pearl of the Indian Ocean.
           </p>
         </div>

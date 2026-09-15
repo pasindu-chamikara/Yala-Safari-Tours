@@ -5,12 +5,14 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase/config";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -70,13 +72,26 @@ export default function AdminLoginPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-300 mb-1">Password</label>
-            <input
-              type="password"
-              required
-              className="w-full px-4 py-3 bg-stone-900 border border-stone-700 text-white rounded-none focus:outline-none focus:border-emerald-500 transition-colors"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                className="w-full px-4 py-3 pr-10 bg-stone-900 border border-stone-700 text-white rounded-none focus:outline-none focus:border-emerald-500 transition-colors"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-stone-400 hover:text-stone-300"
+              >
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5" />
+                ) : (
+                  <Eye className="h-5 w-5" />
+                )}
+              </button>
+            </div>
           </div>
           <button
             type="submit"

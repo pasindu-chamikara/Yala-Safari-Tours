@@ -5,12 +5,14 @@ import { getTours } from "@/lib/firebase/tours";
 import { tours as fallbackTours } from "@/lib/data/tours";
 import { getVehicles } from "@/lib/firebase/vehicles";
 import HeroSlider from "@/components/HeroSlider";
+import PopularTours from "@/components/home/PopularTours";
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const { success, data } = await getTours();
-  const displayTours = success && data && data.length > 0 ? data.slice(0, 3) : fallbackTours.slice(0, 3);
+  const plainData = success && data ? JSON.parse(JSON.stringify(data)) : null;
+  const displayTours = plainData && plainData.length > 0 ? plainData.slice(0, 3) : fallbackTours.slice(0, 3);
 
   const vehicles = await getVehicles();
 
@@ -22,6 +24,8 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[40vh] md:min-h-screen flex flex-col pt-20 md:pt-0 justify-center">
         <HeroSlider />
+        {/* Dark Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/50 to-transparent z-[5]"></div>
 
         {/* Main Content */}
         <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-center py-10">
@@ -30,56 +34,50 @@ export default async function Home() {
             TRUSTED BY 2000+ TRAVELLERS WORLDWIDE
             <div className="w-6 md:w-10 h-px bg-red-500"></div>
           </div>
-          <h1 className="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight drop-shadow-lg max-w-3xl" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <h1 className="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight drop-shadow-2xl max-w-3xl" style={{ fontFamily: 'var(--font-playfair)' }}>
             Experience the Wild Heart of Sri Lanka
           </h1>
-          <p className="text-lg md:text-xl text-stone-200 mb-10 drop-shadow-md max-w-xl leading-relaxed">
+          <p className="text-lg md:text-xl text-stone-100 font-medium mb-10 drop-shadow-xl max-w-xl leading-relaxed">
             Luxury Sri Lankan Safaris Designed to Rewild Your Soul, Transform Lives, and Protect Wildlife & Wild Spaces
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link
               href="/tours"
-              className="bg-transparent border border-white text-white hover:bg-white/10 font-bold py-3 px-8 transition-colors shadow-lg w-full sm:w-auto"
+              className="bg-[#ffcc00] text-stone-900 border border-[#ffcc00] hover:bg-yellow-500 hover:border-yellow-500 font-bold py-3 px-8 transition-colors shadow-xl w-full sm:w-auto"
             >
               Explore Tours
             </Link>
           </div>
         </div>
 
-        {/* Bottom Stats */}
-        <div className="relative z-20 w-full px-6 md:px-12 pb-24 md:pb-16 mt-4">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-white text-sm md:text-base border-t border-white/20 pt-6">
-            <div className="flex items-center gap-3">
-              <div className="bg-emerald-500 p-2">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-              </div>
-              Rated 4.9/5 on TripAdvisor
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="border border-white/40 p-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              </div>
-              10+ Years of Safari Experience
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="border border-white/40 p-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-              </div>
-              Local Guides & Authentic Experiences
-            </div>
-          </div>
-        </div>
-
-        {/* Torn Edge mask */}
-        <div className="absolute bottom-0 left-0 w-full z-30 translate-y-[40%]">
-          <svg viewBox="0 0 1440 120" className="w-full h-12 md:h-24 fill-white" preserveAspectRatio="none">
-            <path d="M0,60 C150,80 300,20 450,50 C600,80 750,10 900,40 C1050,70 1200,30 1440,60 L1440,120 L0,120 Z"></path>
-          </svg>
-        </div>
       </section>
 
+      {/* Trust Bar (Moved from hero to unclutter photo) */}
+      <div className="w-full bg-stone-900 px-6 md:px-12 py-8 relative z-40 shadow-lg">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 text-white text-sm md:text-base">
+          <div className="flex items-center gap-3 font-medium">
+            <div className="bg-emerald-500 p-2 rounded-full">
+              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            </div>
+            Rated 4.9/5 on TripAdvisor
+          </div>
+          <div className="flex items-center gap-3 font-medium">
+            <div className="bg-stone-800 p-2 rounded-full">
+              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            10+ Years of Safari Experience
+          </div>
+          <div className="flex items-center gap-3 font-medium">
+            <div className="bg-stone-800 p-2 rounded-full">
+              <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            </div>
+            Local Guides & Authentic Experiences
+          </div>
+        </div>
+      </div>
+
       {/* Destinations Section */}
-      <section id="parks" className="py-12 relative z-20 mt-10 overflow-hidden bg-stone-50">
+      <section id="parks" className="py-12 relative z-20 mt-6 overflow-hidden bg-stone-50">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
           <div className="flex flex-col items-center justify-center group cursor-default">
             <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
@@ -200,45 +198,9 @@ export default async function Home() {
         <h2 className="text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Popular Safaris & Tours</h2>
         <p className="text-stone-600 mb-10">Handpicked journeys that bring you closer to Sri Lanka's untamed beauty.</p>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {['All', 'Most Popular', 'Special Offer', 'Best Value', 'Featured Safari', 'Trending Now'].map((tab, i) => (
-            <button key={i} className={`px-6 py-2 border text-sm font-medium transition ${i === 0 ? 'bg-[#314a1c] text-white border-[#314a1c]' : 'bg-white text-stone-600 border-stone-200 hover:border-[#314a1c]'}`}>
-              {tab}
-            </button>
-          ))}
-        </div>
+        <PopularTours initialTours={displayTours} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12">
-          {displayTours.map((tour, i) => (
-            <div key={tour.id || i} className="bg-white overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl transition-shadow flex flex-col">
-              <div className="relative h-56">
-                <img src={tour.img} alt={tour.title} className="w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1 bg-[#314a1c] text-white">
-                  {tour.tags && tour.tags.length > 0 ? tour.tags[0] : 'Featured Safari'}
-                </span>
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <div className="flex items-center gap-2 text-stone-500 text-sm mb-3">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  {tour.duration}
-                </div>
-                <h3 className="text-xl text-stone-900 mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>{tour.title}</h3>
-                <p className="text-stone-500 text-sm mb-6 flex-grow line-clamp-2">{tour.desc}</p>
-                <div className="flex justify-between items-end mt-auto">
-                  <div>
-                    <p className="text-stone-400 text-xs uppercase mb-1">Start from</p>
-                    <p className="text-xl font-bold text-[#314a1c]">Rs. {tour.price?.toLocaleString() || 'N/A'}</p>
-                  </div>
-                  <Link href={`/tours/${tour.id}`} className="bg-[#ffcc00] hover:bg-yellow-500 text-stone-900 font-bold py-2 px-6 text-sm transition">
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <Link href="/tours" className="inline-block bg-[#ffcc00] hover:bg-yellow-500 text-stone-900 font-bold py-3 px-8 transition shadow-md">
+        <Link href="/tours" className="inline-block bg-[#ffcc00] hover:bg-yellow-500 text-black font-extrabold py-3 px-8 transition shadow-md">
           View All Safaris
         </Link>
       </section>
@@ -246,7 +208,7 @@ export default async function Home() {
 
 
       {/* Our Fleet Section */}
-      <section className="py-12 px-6 max-w-7xl mx-auto text-center relative z-20">
+      <section className="py-12 px-6 max-w-[90rem] mx-auto text-center relative z-20">
         <div className="flex items-center justify-between mb-12 text-left">
           <div>
             <p className="text-[#314a1c] text-sm font-bold tracking-widest mb-2 uppercase">Our Fleet</p>
@@ -254,11 +216,11 @@ export default async function Home() {
             <p className="text-stone-600">Built for rugged terrain, designed for your safety and maximum wildlife visibility.</p>
           </div>
           <div className="hidden md:flex gap-4">
-            <button className="w-10 h-10 border border-stone-200 flex items-center justify-center text-stone-400 hover:text-stone-800 hover:bg-stone-50 transition shadow-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+            <button className="w-12 h-12 border-2 border-stone-300 flex items-center justify-center text-stone-500 hover:text-stone-900 hover:border-stone-900 hover:bg-stone-50 transition shadow-sm">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
             </button>
-            <button className="w-10 h-10 border border-stone-800 flex items-center justify-center text-stone-800 hover:bg-stone-50 transition shadow-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+            <button className="w-12 h-12 border-2 border-stone-900 flex items-center justify-center text-stone-900 hover:bg-stone-50 transition shadow-sm">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path></svg>
             </button>
           </div>
         </div>
@@ -270,13 +232,13 @@ export default async function Home() {
         ) : (
           <div className="flex overflow-x-auto gap-6 pb-8 snap-x hide-scrollbar text-left">
             {vehicles.map((vehicle, i) => (
-              <div key={vehicle.id || i} className="min-w-[320px] bg-white overflow-hidden shadow-sm border border-stone-100 snap-center">
-                <div className="relative h-64">
+              <div key={vehicle.id || i} className="min-w-[85vw] md:min-w-[450px] lg:min-w-[500px] bg-white overflow-hidden shadow-sm border border-stone-100 snap-center">
+                <div className="relative h-72 md:h-80">
                   <img src={vehicle.url} alt={vehicle.title} className="w-full h-full object-cover" />
                   <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1 bg-[#314a1c]/80 backdrop-blur-sm text-white">4x4 Safari Jeep</span>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl text-stone-900 mb-2 font-bold font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{vehicle.title}</h3>
+                <div className="px-6 py-5">
+                  <h3 className="text-xl text-stone-900 font-bold font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{vehicle.title}</h3>
                 </div>
               </div>
             ))}
@@ -284,7 +246,7 @@ export default async function Home() {
         )}
 
         <div className="flex justify-center gap-4 mt-8">
-          <Link href="/tours" className="bg-[#ffcc00] hover:bg-yellow-500 text-stone-900 font-bold py-3 px-8 transition shadow-md">
+          <Link href="/tours" className="bg-[#ffcc00] hover:bg-yellow-500 text-black font-extrabold py-3 px-8 transition shadow-md">
             Book a Safari
           </Link>
         </div>
@@ -325,7 +287,7 @@ export default async function Home() {
         </div>
 
         {/* Torn Edge mask for the bottom transition */}
-        <div className="absolute bottom-0 left-0 w-full translate-y-1/2 rotate-180 z-30">
+        <div className="absolute bottom-0 left-0 w-full z-30">
           <svg viewBox="0 0 1440 120" className="w-full h-12 md:h-24 fill-white" preserveAspectRatio="none">
             <path d="M0,60 C150,80 300,20 450,50 C600,80 750,10 900,40 C1050,70 1200,30 1440,60 L1440,120 L0,120 Z"></path>
           </svg>
@@ -337,18 +299,17 @@ export default async function Home() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
             <div className="w-16 h-px bg-[#314a1c]"></div>
-            OUR TRUSTED
+            OUR TRUSTED PARTNERS
             <div className="w-16 h-px bg-[#314a1c]"></div>
           </div>
           <h2 className="text-4xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Partners & Affiliations</h2>
           <p className="text-stone-500">We proudly collaborate with leading travel and tourism organizations to ensure safe, sustainable, and unforgettable safari experiences.</p>
         </div>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-70 grayscale">
-          <div className="flex justify-center border-r border-dashed border-stone-200 py-4"><span className="text-xl font-serif font-bold italic">So Sri Lanka</span></div>
-          <div className="flex justify-center border-r border-dashed border-stone-200 py-4"><span className="text-lg font-bold flex items-center gap-1"><span className="w-6 h-6 bg-green-500 inline-block"></span>tripadvisor</span></div>
-          <div className="flex justify-center border-r border-dashed border-stone-200 py-4"><span className="text-sm font-bold uppercase text-center leading-tight">Yala<br />Wildlife<br />Service</span></div>
-          <div className="flex justify-center border-r border-dashed border-stone-200 py-4"><span className="text-xl font-serif text-amber-700 italic">elewana<br /><span className="text-[10px] uppercase font-sans text-stone-500 not-italic tracking-widest">collection</span></span></div>
-          <div className="flex justify-center py-4"><div className="flex gap-1"><div className="w-6 h-10 bg-amber-800"></div><div className="w-6 h-10 bg-green-800"></div><div className="w-6 h-10 bg-stone-400"></div></div></div>
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center text-stone-900 grayscale">
+          <div className="flex justify-center py-4"><span className="text-xl font-serif font-bold italic">So Sri Lanka</span></div>
+          <div className="flex justify-center py-4"><span className="text-lg font-bold flex items-center gap-1"><span className="w-6 h-6 bg-green-500 inline-block rounded-full"></span>tripadvisor</span></div>
+          <div className="flex justify-center py-4"><span className="text-sm font-bold uppercase text-center leading-tight">Yala<br />Wildlife<br />Service</span></div>
+          <div className="flex justify-center py-4"><span className="text-xl font-serif text-amber-700 italic">elewana<br /><span className="text-[10px] uppercase font-sans text-stone-500 not-italic tracking-widest">collection</span></span></div>
         </div>
       </section>
 
@@ -464,36 +425,36 @@ export default async function Home() {
             <div>
               <h4 className="font-bold text-white mb-6">Useful Links</h4>
               <ul className="space-y-4 text-stone-400">
-                <li><Link href="#" className="hover:text-white transition">Tours & Safaris</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Accommodation</Link></li>
+                <li><Link href="/tours" className="hover:text-white transition">Tours & Safaris</Link></li>
+                <li><Link href="/gallery" className="hover:text-white transition">Gallery</Link></li>
                 <li><Link href="/#parks" className="hover:text-white transition">National Parks</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Contact Us</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition">Contact Us</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-white mb-6">Destinations</h4>
               <ul className="space-y-4 text-stone-400">
-                <li><Link href="#" className="hover:text-white transition">Yala</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Udawalawe</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Wilpattu</Link></li>
-                <li><Link href="#" className="hover:text-white transition">Minneriya</Link></li>
+                <li><Link href="/#parks" className="hover:text-white transition">Yala</Link></li>
+                <li><Link href="/#parks" className="hover:text-white transition">Udawalawe</Link></li>
+                <li><Link href="/#parks" className="hover:text-white transition">Wilpattu</Link></li>
+                <li><Link href="/#parks" className="hover:text-white transition">Minneriya</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-white mb-6">Safari Categories</h4>
               <div className="flex gap-12">
                 <ul className="space-y-4 text-stone-400">
-                  <li><Link href="#" className="hover:text-white transition">Leopard Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Luxury Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Fly-in Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Family Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Honeymoon Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Leopard Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Luxury Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Fly-in Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Family Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Honeymoon Safaris</Link></li>
                 </ul>
                 <ul className="space-y-4 text-stone-400">
-                  <li><Link href="#" className="hover:text-white transition">Migration Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Conservation Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">4x4 Safaris</Link></li>
-                  <li><Link href="#" className="hover:text-white transition">Milestone Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Migration Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Conservation Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">4x4 Safaris</Link></li>
+                  <li><Link href="/tours" className="hover:text-white transition">Milestone Safaris</Link></li>
                 </ul>
               </div>
             </div>

@@ -18,12 +18,12 @@ export default function ContactPage() {
       <section className="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center">
         <div className="absolute inset-0 w-full h-full">
           <img 
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2000&auto=format&fit=crop" 
+            src="/hero4.jpg" 
             alt="Safari Landscape" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-stone-950/70 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-900/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-stone-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/10 to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 mt-10 max-w-4xl mx-auto transform translate-y-8">
