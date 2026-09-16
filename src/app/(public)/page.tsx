@@ -6,6 +6,7 @@ import { tours as fallbackTours } from "@/lib/data/tours";
 import { getVehicles } from "@/lib/firebase/vehicles";
 import HeroSlider from "@/components/HeroSlider";
 import PopularTours from "@/components/home/PopularTours";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const dynamic = 'force-dynamic';
 
@@ -53,8 +54,8 @@ export default async function Home() {
       </section>
 
       {/* Trust Bar (Moved from hero to unclutter photo) */}
-      <div className="w-full bg-stone-900 px-6 md:px-12 py-8 relative z-40 shadow-lg">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 text-white text-sm md:text-base">
+      <div className="w-full bg-stone-900 px-6 md:px-12 py-6 md:py-8 relative z-40 shadow-lg">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 text-white text-sm md:text-base">
           <div className="flex items-center gap-3 font-medium">
             <div className="bg-emerald-500 p-2 rounded-full">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
@@ -77,25 +78,25 @@ export default async function Home() {
       </div>
 
       {/* Destinations Section */}
-      <section id="parks" className="py-12 relative z-20 mt-6 overflow-hidden bg-stone-50">
-        <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+      <section id="parks" className="py-8 md:py-12 relative z-20 mt-6 overflow-hidden bg-stone-50">
+        <FadeIn className="max-w-7xl mx-auto px-6 text-center mb-8 md:mb-16">
           <div className="flex flex-col items-center justify-center group cursor-default">
             <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
               <div className="w-8 h-px bg-[#314a1c] transition-all duration-700 group-hover:w-24 group-hover:bg-emerald-600"></div>
               <span className="transition-transform duration-500 group-hover:scale-110 group-hover:text-emerald-700">EXPLORE</span>
               <div className="w-8 h-px bg-[#314a1c] transition-all duration-700 group-hover:w-24 group-hover:bg-emerald-600"></div>
             </div>
-            <h2 className="text-5xl text-stone-900 mb-4 transition-colors duration-700 group-hover:text-stone-700" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h2 className="text-4xl md:text-5xl text-stone-900 mb-4 transition-colors duration-700 group-hover:text-stone-700" style={{ fontFamily: 'var(--font-playfair)' }}>
               Sri Lanka's <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#314a1c] via-emerald-500 to-[#314a1c] bg-[length:200%_auto] animate-[text-gradient_5s_linear_infinite]">Iconic</span> Destinations
             </h2>
             <p className="text-stone-600 max-w-2xl mx-auto transition-colors duration-700 group-hover:text-stone-900">
               From the vast plains of the Yala National Park to the majestic peaks of Adam's Peak - explore where your adventure begins.
             </p>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Expanding Accordion Track */}
-        <div className="max-w-[90rem] mx-auto px-4 md:px-6 w-full">
+        <FadeIn delay={200} className="max-w-[90rem] mx-auto px-4 md:px-6 w-full">
           <div className="flex flex-col md:flex-row gap-4 w-full h-[700px] md:h-[600px]">
             {[
               { name: 'Yala National Park', desc: 'Famous for leopards, elephants, sloth bears, and diverse wildlife. Experience an exciting safari through forests, grasslands, and lagoons.', img: '/yala.jpg', slug: 'yala' },
@@ -127,27 +128,27 @@ export default async function Home() {
               </Link>
             ))}
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Safari Insights & Travel Tips Section */}
-      <section className="py-12 bg-[#eef2e6] relative">
+      <section className="py-8 md:py-12 bg-[#eef2e6] relative">
         <div className="absolute top-0 left-0 w-full -translate-y-[40%] rotate-180 z-10">
           <svg viewBox="0 0 1440 120" className="w-full h-12 md:h-24 fill-[#eef2e6]" preserveAspectRatio="none">
             <path d="M0,60 C150,80 300,20 450,50 C600,80 750,10 900,40 C1050,70 1200,30 1440,60 L1440,120 L0,120 Z"></path>
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-20 text-center">
+        <FadeIn className="max-w-7xl mx-auto px-6 relative z-20 text-center">
           <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
             <div className="w-16 h-px bg-[#314a1c]"></div>
             SAFARI
             <div className="w-16 h-px bg-[#314a1c]"></div>
           </div>
-          <h2 className="text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Safari Insights & Travel Tips</h2>
-          <p className="text-stone-600 mb-16 max-w-2xl mx-auto">Get ready for your Yala adventure with helpful safari tips, wildlife insights, and travel information designed to make your experience unforgettable.</p>
+          <h2 className="text-4xl md:text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Safari Insights & Travel Tips</h2>
+          <p className="text-stone-600 mb-8 md:mb-16 max-w-2xl mx-auto">Get ready for your Yala adventure with helpful safari tips, wildlife insights, and travel information designed to make your experience unforgettable.</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-left mb-12">
             {[
               { 
                 tag: 'PLAN YOUR SAFARI', 
@@ -168,10 +169,10 @@ export default async function Home() {
                 linkText: 'Discover Wildlife →',
               }
             ].map((blog, i) => (
-              <div key={i} className="group cursor-pointer flex flex-col bg-white border border-stone-200 p-8 shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-[10px] font-bold px-3 py-1 bg-[#314a1c] text-white mb-6 tracking-widest self-start">{blog.tag}</span>
-                <h3 className="text-2xl font-bold text-stone-900 mb-4 font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{blog.title}</h3>
-                <p className="text-base text-stone-600 mb-8 flex-grow">{blog.desc}</p>
+              <div key={i} className="group cursor-pointer flex flex-col bg-white border border-stone-200 p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow">
+                <span className="text-[10px] font-bold px-3 py-1 bg-[#314a1c] text-white mb-4 tracking-widest self-start">{blog.tag}</span>
+                <h3 className="text-xl font-bold text-stone-900 mb-3 font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{blog.title}</h3>
+                <p className="text-sm text-stone-600 mb-5 flex-grow">{blog.desc}</p>
                 
                 <div className="flex items-center text-[#314a1c] font-bold text-sm mt-auto group-hover:text-yellow-600 transition-colors">
                   {blog.linkText}
@@ -179,7 +180,7 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeIn>
 
         <div className="absolute bottom-0 left-0 w-full translate-y-[40%] z-10">
           <svg viewBox="0 0 1440 120" className="w-full h-12 md:h-24 fill-white" preserveAspectRatio="none">
@@ -189,30 +190,33 @@ export default async function Home() {
       </section>
 
       {/* Popular Safaris Section */}
-      <section className="py-12 px-6 max-w-7xl mx-auto text-center relative z-20 mt-10">
-        <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
+      <section className="py-8 md:py-12 px-6 max-w-7xl mx-auto w-full overflow-hidden text-center relative z-20 mt-6 md:mt-10">
+        <FadeIn>
+          <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
           <div className="w-16 h-px bg-[#314a1c]"></div>
           OUR MOST
           <div className="w-16 h-px bg-[#314a1c]"></div>
         </div>
-        <h2 className="text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Popular Safaris & Tours</h2>
+        <h2 className="text-4xl md:text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Popular Safaris & Tours</h2>
         <p className="text-stone-600 mb-10">Handpicked journeys that bring you closer to Sri Lanka's untamed beauty.</p>
 
         <PopularTours initialTours={displayTours} />
 
-        <Link href="/tours" className="inline-block bg-[#ffcc00] hover:bg-yellow-500 text-black font-extrabold py-3 px-8 transition shadow-md">
+        <Link href="/tours" className="inline-block bg-[#ffcc00] hover:bg-yellow-500 text-black font-extrabold py-3 px-8 transition shadow-md mt-6">
           View All Safaris
         </Link>
+        </FadeIn>
       </section>
 
 
 
       {/* Our Fleet Section */}
-      <section className="py-12 px-6 max-w-[90rem] mx-auto text-center relative z-20">
-        <div className="flex items-center justify-between mb-12 text-left">
+      <section className="py-8 md:py-12 px-6 max-w-[90rem] mx-auto w-full overflow-hidden text-center relative z-20">
+        <FadeIn>
+          <div className="flex items-center justify-between mb-8 md:mb-12 text-left">
           <div>
             <p className="text-[#314a1c] text-sm font-bold tracking-widest mb-2 uppercase">Our Fleet</p>
-            <h2 className="text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Custom Safari Jeeps</h2>
+            <h2 className="text-4xl md:text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Custom Safari Jeeps</h2>
             <p className="text-stone-600">Built for rugged terrain, designed for your safety and maximum wildlife visibility.</p>
           </div>
           <div className="hidden md:flex gap-4">
@@ -250,32 +254,33 @@ export default async function Home() {
             Book a Safari
           </Link>
         </div>
+        </FadeIn>
       </section>
 
       {/* About Yala Safari Tours */}
-      <section className="relative overflow-hidden pt-24 bg-gradient-to-b from-white to-[#ffeb99] z-20">
+      <section className="relative overflow-hidden pt-10 md:pt-24 bg-gradient-to-b from-white to-[#ffeb99] z-20">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative z-20 pb-24">
+          <FadeIn direction="left" className="relative z-20 pb-12 md:pb-24">
             <div className="flex items-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
               <div className="w-16 h-px bg-[#314a1c]"></div>
               ABOUT
             </div>
-            <h2 className="text-5xl text-stone-900 mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Yala Safari Tours</h2>
-            <div className="border-l-4 border-red-500 pl-4 py-1 mb-8">
+            <h2 className="text-4xl md:text-5xl text-stone-900 mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Yala Safari Tours</h2>
+            <div className="border-l-4 border-red-500 pl-4 py-1 mb-6 md:mb-8">
               <h3 className="text-xl font-bold text-stone-800">From our roots in Yala to the heart of your next adventure.</h3>
             </div>
             <p className="text-sm text-stone-700 mb-4 leading-relaxed font-medium">
               Yala Safari Tours was born from a passion for sharing the beauty of Sri Lanka with the world. Our team of local experts creates authentic experiences that blend wildlife, culture, and comfort - ensuring every traveler leaves with unforgettable memories.
             </p>
-            <p className="text-sm text-stone-700 mb-10 leading-relaxed font-medium">
+            <p className="text-sm text-stone-700 mb-8 md:mb-10 leading-relaxed font-medium">
               The creation of Yala Safari Tours is a true community effort, bringing together skilled hands and loving hearts. A few days before the wedding, women from the community gather to craft this vibrant necklace, pouring their collective love and blessings into every knot.
             </p>
             <Link href="/about" className="inline-block bg-white hover:bg-stone-50 text-stone-900 font-bold py-3 px-8 transition shadow-md border border-stone-200">
               Know More
             </Link>
-          </div>
+          </FadeIn>
 
-          <div className="relative z-20 pb-24 flex justify-center">
+          <FadeIn direction="right" delay={200} className="relative z-20 pb-16 md:pb-24 flex justify-center">
             {/* Decorative Circular Rings */}
             <div className="absolute w-[400px] h-[400px] border-[12px] border-dashed border-white opacity-40"></div>
             <div className="absolute w-[460px] h-[460px] border-[8px] border-dashed border-white opacity-20"></div>
@@ -283,7 +288,7 @@ export default async function Home() {
             <div className="w-[360px] h-[360px] overflow-hidden border-4 border-white shadow-2xl relative z-10">
               <img src="/about5.jpg" alt="Local Guide" className="w-full h-full object-cover" />
             </div>
-          </div>
+          </FadeIn>
         </div>
 
         {/* Torn Edge mask for the bottom transition */}
@@ -295,14 +300,14 @@ export default async function Home() {
       </section>
 
       {/* Trusted Partners */}
-      <section className="py-12 px-6 border-b border-stone-100 relative z-20 bg-white">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <section className="py-8 md:py-12 px-6 border-b border-stone-100 relative z-20 bg-white">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
           <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
             <div className="w-16 h-px bg-[#314a1c]"></div>
             OUR TRUSTED PARTNERS
             <div className="w-16 h-px bg-[#314a1c]"></div>
           </div>
-          <h2 className="text-4xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Partners & Affiliations</h2>
+          <h2 className="text-3xl md:text-4xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>Partners & Affiliations</h2>
           <p className="text-stone-500">We proudly collaborate with leading travel and tourism organizations to ensure safe, sustainable, and unforgettable safari experiences.</p>
         </div>
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center text-stone-900 grayscale">
@@ -315,16 +320,21 @@ export default async function Home() {
 
 
       {/* Testimonials */}
-      <section className="py-12 px-6 max-w-7xl mx-auto text-center relative z-20 bg-white">
+      <section className="py-8 md:py-12 px-6 max-w-7xl mx-auto w-full overflow-hidden text-center relative z-20 bg-white">
         <div className="flex items-center justify-center gap-4 text-[#314a1c] text-sm font-bold tracking-widest mb-4">
           <div className="w-16 h-px bg-[#314a1c]"></div>
           TESTIMONIALS
           <div className="w-16 h-px bg-[#314a1c]"></div>
         </div>
-        <h2 className="text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>What Our Guests Say</h2>
-        <p className="text-stone-600 mb-16">Real stories from travelers who explored with Yala Safari Tours.</p>
+        <h2 className="text-4xl md:text-5xl text-stone-900 mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>What Our Guests Say</h2>
+        <p className="text-stone-600 mb-6 md:mb-16">Real stories from travelers who explored with Yala Safari Tours.</p>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 text-left">
+        <div className="flex md:hidden items-center justify-center gap-2 text-stone-400 text-xs font-bold uppercase tracking-widest mb-4">
+          <span>Swipe for more</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </div>
+
+        <div className="flex overflow-x-auto snap-x hide-scrollbar md:block md:columns-2 lg:columns-3 gap-6 text-center md:text-left pb-4 md:pb-0">
           {[
             { rating: 5, title: "Professional and Reliable", text: "We are so pleased that we chose Yala Safari Tours! Everything was well organized, from the booking to the safari experience. Our driver was friendly, professional, and very knowledgeable about the wildlife. READ MORE →", author: "Nelly", loc: "United Kingdom", platform: "Google" },
             { rating: 5, title: "An Amazing Wildlife Experience", text: "Our Yala safari was one of the highlights of our Sri Lanka trip. We saw elephants, crocodiles, beautiful birds, and even a leopard! The whole experience was exciting and unforgettable. READ MORE →", author: "Daniel", loc: "Australia", platform: "Tripadvisor" },
@@ -333,7 +343,7 @@ export default async function Home() {
             { rating: 5, title: "Perfect Family Adventure", text: "We had a wonderful safari with our family. The jeep was comfortable, the service was excellent, and our children loved seeing the elephants and other animals in their natural habitat. A fantastic experience! READ MORE →", author: "Emma", loc: "Netherlands", platform: "Google" },
             { rating: 5, title: "Worth Every Moment", text: "Yala Safari Tours gave us an unforgettable day in the wild. Our guide was knowledgeable and made sure we had plenty of opportunities to enjoy and photograph the wildlife. We would happily book again! READ MORE →", author: "James", loc: "United States", platform: "Tripadvisor" },
           ].map((review, i) => (
-            <div key={i} className="bg-white p-8  shadow-sm border border-stone-100 mb-6 break-inside-avoid">
+            <div key={i} className="bg-white p-6 md:p-8 shadow-sm border border-stone-100 mb-0 md:mb-6 break-inside-avoid w-[85vw] sm:w-[400px] md:w-auto flex-shrink-0 snap-center flex flex-col items-center md:items-start text-center md:text-left">
               <div className="flex gap-1 text-[#ffcc00] mb-3">
                 {[...Array(review.rating)].map((_, j) => <svg key={j} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>)}
               </div>
@@ -357,8 +367,8 @@ export default async function Home() {
       </section>
 
       {/* Bottom CTA & Awards */}
-      <section className="relative pt-24 pb-48 z-20">
-        <div className="max-w-5xl mx-auto px-6 relative z-30 mb-[-100px] bg-white  p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-12 border-t-8 border-[#ffcc00]">
+      <section className="relative pt-10 md:pt-24 pb-32 md:pb-48 z-20">
+        <div className="max-w-5xl mx-auto px-6 relative z-30 mb-[-100px] bg-white p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 border-t-8 border-[#ffcc00]">
           <div className="w-full flex flex-col items-center text-center">
             <h2 className="text-4xl md:text-5xl text-stone-900 mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
               We're here to help you plan your <br /> <span className="text-[#314a1c]">Perfect Safari Experience</span>
@@ -369,9 +379,9 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative w-full h-[500px] z-10 pt-32">
+        <div className="relative w-full h-[150px] md:h-[500px] z-10 md:pt-32">
           <div className="absolute inset-0 bg-stone-900 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=2000&auto=format&fit=crop" alt="Leopard" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=2000&auto=format&fit=crop" alt="Leopard" className="hidden md:block w-full h-full object-cover opacity-30 mix-blend-luminosity" />
           </div>
         </div>
 
@@ -384,30 +394,30 @@ export default async function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#151515] text-white pt-24 pb-12 relative z-40">
+      <footer className="bg-[#151515] text-white pt-12 md:pt-24 pb-8 md:pb-12 relative z-40">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 pb-12 border-b border-stone-800">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
               <div className="w-16 h-16 flex items-center justify-center overflow-hidden bg-white"><Image src="/logo-yala.jpg" alt="Logo" width={64} height={64} className="w-full h-full object-contain" style={{ width: "auto", height: "auto" }} /></div>
               <div className="text-xs font-bold uppercase tracking-wider text-stone-300">Yala Safari Tours</div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-12 text-sm text-stone-300">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 md:gap-12 text-sm text-stone-300 text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
                 <div>
                   <div className="text-xs text-stone-500 mb-1">Call anytime</div>
                   <div className="font-bold text-white">+94 77 123 4567</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
                 <div>
                   <div className="text-xs text-stone-500 mb-1">Visit Office</div>
-                  <div className="font-bold text-white">PR88+V9F, Utalii Ln, Tissamaharama, Sri Lanka</div>
+                  <div className="font-bold text-white">PR88+V9F, Utalii Ln, Tissamaharama</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
                 <div>
                   <div className="text-xs text-stone-500 mb-1">Send email</div>
@@ -421,7 +431,7 @@ export default async function Home() {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 py-16 border-b border-stone-800 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-stone-800 text-sm text-center sm:text-left">
             <div>
               <h4 className="font-bold text-white mb-6">Useful Links</h4>
               <ul className="space-y-4 text-stone-400">
@@ -442,7 +452,7 @@ export default async function Home() {
             </div>
             <div>
               <h4 className="font-bold text-white mb-6">Safari Categories</h4>
-              <div className="flex gap-12">
+              <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 sm:gap-12">
                 <ul className="space-y-4 text-stone-400">
                   <li><Link href="/tours" className="hover:text-white transition">Leopard Safaris</Link></li>
                   <li><Link href="/tours" className="hover:text-white transition">Luxury Safaris</Link></li>
@@ -467,7 +477,7 @@ export default async function Home() {
                   <svg className="w-4 h-4 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                 </button>
               </div>
-              <div className="flex gap-3">
+              <div className="flex justify-center sm:justify-start gap-3">
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-700 transition cursor-pointer">f</div>
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-700 transition cursor-pointer">t</div>
                 <div className="w-10 h-10 bg-stone-800 flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-700 transition cursor-pointer">in</div>
@@ -476,8 +486,8 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center pt-8 text-xs text-stone-500">
-            <div className="flex gap-6 mb-4 md:mb-0 text-center items-center">
+          <div className="flex justify-center items-center pt-8 text-xs text-stone-500">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-0 text-center items-center">
               <p>&copy; 2025 YALA SAFARI TOURS. All Rights Reserved.</p>
               <Link href="/privacy" className="hover:text-stone-300">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-stone-300">Terms of Conditions</Link>

@@ -25,26 +25,26 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/10 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 text-center px-6 mt-10 max-w-4xl mx-auto transform translate-y-8">
+        <div className="relative z-10 text-center px-6 mt-0 md:mt-10 max-w-4xl mx-auto transform translate-y-0 md:translate-y-8">
           <div className="inline-flex items-center gap-4 text-[#ffcc00] font-bold tracking-[0.2em] text-xs uppercase mb-8">
             <div className="w-12 h-px bg-[#ffcc00]"></div>
             Our Heritage
             <div className="w-12 h-px bg-[#ffcc00]"></div>
           </div>
-          <h1 className="text-6xl md:text-8xl text-white mb-6 leading-tight drop-shadow-2xl" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <h1 className="text-5xl md:text-8xl text-white mb-6 leading-tight drop-shadow-2xl" style={{ fontFamily: 'var(--font-playfair)' }}>
             The Spirit of Yala
           </h1>
-          <p className="text-xl md:text-2xl text-stone-300 font-light drop-shadow-lg leading-relaxed">
+          <p className="text-lg md:text-2xl text-stone-300 font-light drop-shadow-lg leading-relaxed">
             More than just a safari. We are the stewards of Sri Lanka's wild spaces.
           </p>
         </div>
       </section>
 
       {/* 2. Brand Identity & Intro Section */}
-      <section className="py-16 px-6 max-w-5xl mx-auto text-center relative z-20">
+      <section className="py-10 md:py-16 px-6 max-w-5xl mx-auto text-center relative z-20">
 
         
-        <h2 className="text-4xl md:text-5xl text-stone-900 mb-10 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+        <h2 className="text-3xl md:text-5xl text-stone-900 mb-8 md:mb-10 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
           Born from a profound respect for nature.
         </h2>
         <div className="w-24 h-1 bg-[#314a1c] mx-auto mb-10"></div>
@@ -54,7 +54,7 @@ export default function AboutPage() {
       </section>
 
       {/* 3. True Sri Lankan Hospitality (Using about2.jpg) */}
-      <section className="py-12 bg-stone-900 relative overflow-hidden">
+      <section className="py-10 md:py-16 bg-stone-900 relative overflow-hidden">
         {/* Decorative subtle background pattern */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-stone-500 via-stone-900 to-stone-900"></div>
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
               <Heart className="w-5 h-5" />
               Community & Care
             </div>
-            <h3 className="text-4xl md:text-5xl text-white mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h3 className="text-3xl md:text-5xl text-white mb-6 md:mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
               True Sri Lankan Hospitality
             </h3>
             <p className="text-lg leading-relaxed mb-8 font-light text-stone-400">
@@ -100,12 +100,12 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Experience Collage (Using about3.jpg & about4.jpg) */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-8">
+      <section className="py-10 md:py-16 px-6 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-8">
           
           {/* Overlapping Image Grid */}
-          <div className="md:w-1/2 relative min-h-[400px] w-full">
-            <div className="absolute top-0 left-0 w-3/4 aspect-[3/4] rounded-none overflow-hidden shadow-2xl z-10 animate-float-slow border-4 border-white">
+          <div className="md:w-1/2 relative min-h-[350px] md:min-h-[400px] w-full max-w-sm mx-auto md:max-w-none">
+            <div className="absolute top-0 left-0 w-3/4 aspect-[3/4] rounded-none overflow-hidden shadow-2xl z-10 border-4 border-white">
               <img src="/about3.jpg" alt="Safari Experience" className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-0 right-0 w-2/3 aspect-square rounded-none overflow-hidden shadow-2xl z-20 border-8 border-stone-50 bg-stone-200">
@@ -114,7 +114,7 @@ export default function AboutPage() {
           </div>
           
           <div className="md:w-1/2 md:pl-16">
-            <h3 className="text-4xl text-stone-900 mb-8 font-serif leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h3 className="text-3xl md:text-4xl text-stone-900 mb-6 md:mb-8 font-serif leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
               Curating unforgettable encounters with nature.
             </h3>
             <p className="text-stone-600 text-lg leading-relaxed mb-12 font-light">
@@ -148,8 +148,8 @@ export default function AboutPage() {
       </section>
 
       {/* Call to Action Footer */}
-      <section className="bg-stone-100 py-16 border-t border-stone-200 text-center px-6">
-        <h2 className="text-5xl text-stone-900 mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+      <section className="bg-stone-100 py-12 md:py-16 border-t border-stone-200 text-center px-6">
+        <h2 className="text-3xl md:text-5xl text-stone-900 mb-6 md:mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
           Ready for the ultimate adventure?
         </h2>
         <p className="text-stone-500 text-xl font-light mb-12 max-w-2xl mx-auto">

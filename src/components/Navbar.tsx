@@ -172,24 +172,24 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-2">
-          <Link href="/tours" onClick={() => setIsMobileMenuOpen(false)} className={`block px-4 py-3 text-lg font-medium transition-colors ${isActive('/tours') ? 'text-[#314a1c] bg-stone-50 border-l-4 border-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent'}`}>
+        <div className="flex-1 overflow-y-auto py-10 px-4 flex flex-col gap-6 items-center justify-center">
+          <Link href="/tours" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-center px-4 py-2 text-xl font-bold transition-colors ${isActive('/tours') ? 'text-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c]'}`}>
             Tours & Safaris
           </Link>
-          <Link href="/#parks" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-3 text-lg font-medium text-stone-600 hover:text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent transition-colors">
+          <Link href="/#parks" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-center px-4 py-2 text-xl font-bold text-stone-600 hover:text-[#314a1c] transition-colors">
             National Parks
           </Link>
-          <Link href="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block px-4 py-3 text-lg font-medium transition-colors ${isActive('/gallery') ? 'text-[#314a1c] bg-stone-50 border-l-4 border-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent'}`}>
+          <Link href="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-center px-4 py-2 text-xl font-bold transition-colors ${isActive('/gallery') ? 'text-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c]'}`}>
             Gallery
           </Link>
-          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block px-4 py-3 text-lg font-medium transition-colors ${isActive('/about') ? 'text-[#314a1c] bg-stone-50 border-l-4 border-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent'}`}>
+          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-center px-4 py-2 text-xl font-bold transition-colors ${isActive('/about') ? 'text-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c]'}`}>
             About Us
           </Link>
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className={`block px-4 py-3 text-lg font-medium transition-colors ${isActive('/contact') ? 'text-[#314a1c] bg-stone-50 border-l-4 border-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent'}`}>
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-center px-4 py-2 text-xl font-bold transition-colors ${isActive('/contact') ? 'text-[#314a1c]' : 'text-stone-600 hover:text-[#314a1c]'}`}>
             Contact
           </Link>
-          <Link href="/leave-review" onClick={() => setIsMobileMenuOpen(false)} className={`block px-4 py-3 text-lg font-medium transition-colors ${isActive('/leave-review') ? 'text-[#314a1c] bg-stone-50 border-l-4 border-[#314a1c]' : 'text-[#314a1c] hover:bg-stone-50 border-l-4 border-transparent'}`}>
-            Leave a Review
+          <Link href="/leave-review" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-center px-4 py-2 text-xl font-bold transition-colors ${isActive('/leave-review') ? 'text-[#314a1c]' : 'text-[#314a1c] hover:text-stone-900'}`}>
+            Review
           </Link>
         </div>
       </div>

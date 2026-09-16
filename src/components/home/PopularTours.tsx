@@ -27,12 +27,12 @@ export default function PopularTours({ initialTours }: { initialTours: any[] }) 
 
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <div className="w-full overflow-x-auto hide-scrollbar pb-4 md:pb-0 flex md:flex-wrap md:justify-center gap-3 mb-8 md:mb-12 snap-x">
         {tabs.map((tab, i) => (
           <button 
             key={i} 
             onClick={() => setActiveTab(tab)}
-            className={`px-6 py-2 border text-sm font-medium transition ${
+            className={`whitespace-nowrap flex-shrink-0 snap-center px-5 py-2 border text-sm font-medium transition ${
               activeTab === tab 
                 ? 'bg-[#314a1c] text-white border-[#314a1c]' 
                 : 'bg-white text-stone-600 border-stone-200 hover:border-[#314a1c]'

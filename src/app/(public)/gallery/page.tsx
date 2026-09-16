@@ -52,7 +52,7 @@ export default function GalleryPage() {
             <p className="mt-2">Check back soon for amazing safari moments!</p>
           </div>
         ) : (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          <div className="columns-2 lg:columns-3 gap-3 md:gap-6 space-y-3 md:space-y-6">
             {images.map((image) => (
               <div 
                 key={image.id} 
