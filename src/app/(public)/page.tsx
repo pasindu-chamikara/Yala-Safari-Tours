@@ -23,7 +23,7 @@ export default async function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] md:min-h-screen flex flex-col pt-20 md:pt-0 justify-center">
+      <section className="relative min-h-[40vh] md:min-h-screen flex flex-col pt-28 md:pt-24 justify-center">
         <HeroSlider />
         {/* Dark Gradient Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/50 to-transparent z-[5]"></div>
@@ -38,7 +38,7 @@ export default async function Home() {
           <h1 className="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight drop-shadow-2xl max-w-3xl" style={{ fontFamily: 'var(--font-playfair)' }}>
             Experience the Wild Heart of Sri Lanka
           </h1>
-          <p className="text-lg md:text-xl text-stone-100 font-medium mb-10 drop-shadow-xl max-w-xl leading-relaxed">
+          <p className="text-lg md:text-xl text-white font-bold mb-10 drop-shadow-2xl max-w-xl leading-relaxed [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.8)]">
             Luxury Sri Lankan Safaris Designed to Rewild Your Soul, Transform Lives, and Protect Wildlife & Wild Spaces
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -367,7 +367,7 @@ export default async function Home() {
       </section>
 
       {/* Bottom CTA & Awards */}
-      <section className="relative pt-10 md:pt-24 pb-32 md:pb-48 z-20">
+      <section className="relative pt-10 md:pt-24 z-20">
         <div className="max-w-5xl mx-auto px-6 relative z-30 mb-[-100px] bg-white p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 border-t-8 border-[#ffcc00]">
           <div className="w-full flex flex-col items-center text-center">
             <h2 className="text-4xl md:text-5xl text-stone-900 mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
@@ -386,7 +386,7 @@ export default async function Home() {
         </div>
 
         {/* Dark torn edge transitioning into footer */}
-        <div className="absolute bottom-0 left-0 w-full z-30 translate-y-1/2 rotate-180">
+        <div className="absolute bottom-0 left-0 w-full z-30">
           <svg viewBox="0 0 1440 120" className="w-full h-12 md:h-24 fill-[#151515]" preserveAspectRatio="none">
             <path d="M0,60 C150,80 300,20 450,50 C600,80 750,10 900,40 C1050,70 1200,30 1440,60 L1440,120 L0,120 Z"></path>
           </svg>
@@ -396,39 +396,46 @@ export default async function Home() {
       {/* Footer */}
       <footer className="bg-[#151515] text-white pt-12 md:pt-24 pb-8 md:pb-12 relative z-40">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 pb-12 border-b border-stone-800">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 pb-12 border-b border-stone-800 items-center text-left">
+            {/* Col 1: Logo */}
             <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
               <div className="w-16 h-16 flex items-center justify-center overflow-hidden bg-white"><Image src="/logo-yala.jpg" alt="Logo" width={64} height={64} className="w-full h-full object-contain" style={{ width: "auto", height: "auto" }} /></div>
               <div className="text-xs font-bold uppercase tracking-wider text-stone-300">Yala Safari Tours</div>
             </div>
 
-            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 md:gap-12 text-sm text-stone-300 text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
+            {/* Col 2 & 3: Contacts */}
+            <div className="lg:col-span-2 flex flex-col sm:flex-row flex-wrap justify-between items-center gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-stone-800 flex flex-shrink-0 items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div>
                 <div>
-                  <div className="text-xs text-stone-500 mb-1">Call anytime</div>
+                  <div className="text-xs text-stone-300 mb-1">Call anytime</div>
                   <div className="font-bold text-white">+94 77 123 4567</div>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+              
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-stone-800 flex flex-shrink-0 items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
                 <div>
-                  <div className="text-xs text-stone-500 mb-1">Visit Office</div>
-                  <div className="font-bold text-white">PR88+V9F, Utalii Ln, Tissamaharama</div>
+                  <div className="text-xs text-stone-300 mb-1">Visit Office</div>
+                  <div className="font-bold text-white">PR88+V9F, Utalii Ln</div>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                <div className="w-10 h-10 bg-stone-800 flex items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-stone-800 flex flex-shrink-0 items-center justify-center"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
                 <div>
-                  <div className="text-xs text-stone-500 mb-1">Send email</div>
+                  <div className="text-xs text-stone-300 mb-1">Send email</div>
                   <div className="font-bold text-white">info@yalasafaritours.com</div>
                 </div>
               </div>
             </div>
 
-            <button className="bg-[#ffcc00] hover:bg-yellow-500 text-stone-900 font-bold py-3 px-8 text-sm transition shadow-md">
-              Plan Your Safari Today
-            </button>
+            {/* Col 4: Button */}
+            <div className="flex justify-center sm:justify-start lg:justify-start">
+              <button className="w-full lg:w-auto bg-[#ffcc00] hover:bg-yellow-500 text-stone-900 font-bold py-3 px-8 text-sm transition shadow-md">
+                Plan Your Safari Today
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-stone-800 text-sm text-center sm:text-left">
