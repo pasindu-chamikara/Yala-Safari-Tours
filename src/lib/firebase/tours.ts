@@ -36,6 +36,8 @@ export const getTours = async () => {
     querySnapshot.forEach((doc) => {
       tours.push({ id: doc.id, ...doc.data() } as Tour);
     });
+    // Sort tours to ensure deterministic order (prevent hydration mismatch)
+    tours.sort((a, b) => a.id.localeCompare(b.id));
     return { success: true, data: tours };
   } catch (error) {
     console.error('Error fetching tours: ', error);

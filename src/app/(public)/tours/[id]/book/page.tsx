@@ -7,6 +7,7 @@ import { createBooking } from '@/lib/firebase/bookings';
 import { getTours } from '@/lib/firebase/tours';
 import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 export default function BookingPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
@@ -96,8 +97,10 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
 
   if (success) {
     return (
-      <div className="min-h-screen bg-stone-50 pt-32 pb-16 px-6 flex items-center justify-center">
-        <div className="bg-white max-w-2xl w-full rounded-none shadow-xl p-12 text-center border border-stone-100">
+      <>
+        <Navbar />
+        <div className="min-h-screen bg-stone-50 pt-32 pb-16 px-6 flex items-center justify-center">
+          <div className="bg-white max-w-2xl w-full rounded-none shadow-xl p-12 text-center border border-stone-100">
           <div className="w-20 h-20 bg-emerald-100 rounded-none flex items-center justify-center mx-auto mb-6 text-emerald-600">
             <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
           </div>
@@ -117,14 +120,17 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
           <Link href="/tours" className="inline-block bg-[#314a1c] hover:bg-emerald-800 text-white font-bold py-3 px-8 rounded-none transition-all uppercase tracking-wider">
             Explore More Tours
           </Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 pt-32 pb-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-stone-50 pt-32 pb-16">
+        <div className="max-w-5xl mx-auto px-6">
         <div className="mb-8">
           <button onClick={() => router.back()} className="text-stone-500 hover:text-[#314a1c] flex items-center gap-2 font-medium transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -370,5 +376,6 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
         </div>
       </div>
     </div>
-  );
+  </>
+);
 }

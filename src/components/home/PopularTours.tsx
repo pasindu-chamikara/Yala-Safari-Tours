@@ -6,24 +6,26 @@ import Link from "next/link";
 export default function PopularTours({ initialTours }: { initialTours: any[] }) {
   const [activeTab, setActiveTab] = useState("All");
 
-  const tabs = ['All', 'Most Popular', 'Special Offer', 'Best Value', 'Featured Safari', 'Trending Now'];
+  // Extract unique tags from all tours
+  const allTags = initialTours.reduce((acc: string[], tour) => {
+    if (tour.tags) {
+      tour.tags.forEach((tag: string) => {
+        if (!acc.includes(tag)) acc.push(tag);
+      });
+    }
+    return acc;
+  }, []);
 
-  // Basic filtering logic
+  // Use 'All' and up to 5 unique tags
+  const tabs = ['All', ...allTags.slice(0, 5)];
+
+  // Exact filtering logic
   const filteredTours = initialTours.filter(tour => {
     if (activeTab === "All") return true;
-    
-    // Fallback: If tags exist, use them, otherwise assign a random/mock logic 
-    // just so the UI shows something responsive. In a real app, 'tour' would 
-    // have accurate categories.
-    if (tour.tags && tour.tags.includes(activeTab)) return true;
-    
-    // As a fallback to make UI feel responsive even if tags don't perfectly match:
-    const mockCategory = tour.tags && tour.tags.length > 0 ? tour.tags[0] : 'Featured Safari';
-    return mockCategory === activeTab;
+    return tour.tags && tour.tags.includes(activeTab);
   });
 
-  // Always show something so the grid doesn't completely empty out if filtering is too strict on mock data
-  const toursToDisplay = filteredTours.length > 0 ? filteredTours : initialTours;
+  const toursToDisplay = filteredTours;
 
   return (
     <>
